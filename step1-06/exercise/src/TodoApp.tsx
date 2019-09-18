@@ -14,7 +14,7 @@ export class TodoApp extends React.Component<any, any> {
         },
         '03': {
           label: 'Todo 3',
-          completed: false
+          completed: true
         },
         '02': {
           label: 'Todo 2',

@@ -48,6 +48,19 @@ input[type='submit'] {
       <pre data-lang="js">
 // Count the number of 'a' characters in the email form. 
 // Update button to reflect that number.  
+const submit=document.querySelector('.submit');
+function countA() {
+const email=document.getElementById('email');
+  const str=email.value;
+  let count=0;
+  for(let letter of str) {
+    if(letter==='a') {
+      count++;
+    }
+  }
+  email.value=count+'matchs';
+}
+submit.onclick=countA;
 
       </pre>
     </div>

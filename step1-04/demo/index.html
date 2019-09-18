@@ -22,10 +22,19 @@
 }
     </pre>
     <pre data-lang="javascript">
-ReactDOM.render(
-  &lt;div>Hello World&lt;/div>, 
-  document.getElementById('app')
-);
+      const count=0;
+      function handleClick() {
+       count++;
+       console.log(count);
+      
+      }
+      ReactDOM.render(
+       <div className='foo'>
+         <div>Hello World</div>
+        <button onClick={handleClick}></button>
+       </div>,
+        document.getElementById('app')
+      );
       </pre>
     <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
   </body>
