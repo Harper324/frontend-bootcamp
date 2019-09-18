@@ -2,7 +2,7 @@
 class Stack<T = number> {
   private data: T[] = [];
 
-  push(item: T) {
+  push(item: T): void {
     this.data.push(item);
   }
   pop(): T {
