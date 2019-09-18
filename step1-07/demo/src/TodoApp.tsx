@@ -71,11 +71,13 @@ export class TodoApp extends React.Component<any, TodoAppState> {
     const { todos } = this.state;
     const newTodos = {};
 
-    Object.keys(this.state.todos).forEach(id => {
+    const todo = Object.keys(this.state.todos).forEach(id => {
       if (!todos[id].completed) {
         newTodos[id] = todos[id];
       }
     });
+
+    // console.log(todo);
 
     this.setState({
       todos: newTodos

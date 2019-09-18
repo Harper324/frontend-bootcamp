@@ -10,3 +10,14 @@ export interface TodoItem {
 export interface Todos {
   [id: string]: TodoItem;
 }
+
+export interface TodoListProps {
+  filter: FilterTypes;
+  todos: Todos;
+  complete: CompleteTodo;
+}
+
+export interface TodoListItemProps extends TodoItem {
+  id: string;
+  complete: CompleteTodo;
+}
