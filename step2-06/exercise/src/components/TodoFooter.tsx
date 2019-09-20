@@ -7,8 +7,8 @@ import { Store } from '../store';
 // TODO: these ?'s after the keys of an interface makes it optional
 // and can be removed when you finished connecting this component
 interface TodoFooterProps {
-  todos?: Store['todos'];
-  clear?: () => void;
+  todos: Store['todos'];
+  clear: () => void;
 }
 
 const TodoFooter = (props: TodoFooterProps) => {
@@ -33,11 +33,19 @@ const TodoFooter = (props: TodoFooterProps) => {
   (state: Store) => ({
     // TODO: mapping for state
     // HINT: look at what the component needed from the props interface
+
   }),
   dispatch => ({
     // TODO: mapping for dispatch actions
     // HINT: look at what the component needed from the props interface
   })
 */
-const ConnectedTodoFooter = connect()(TodoFooter);
+const ConnectedTodoFooter = connect(
+  (state: Store) => ({
+    todos: state.todos
+  }),
+  dispatch => ({
+    clear: () => dispatch(actions.clear())
+  })
+)(TodoFooter);
 export { ConnectedTodoFooter as TodoFooter };
