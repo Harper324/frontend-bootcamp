@@ -1,6 +1,6 @@
 import React from 'react';
 import { Store } from '../store';
-import { DefaultButton, Stack, Text } from 'office-ui-fabric-react';
+import { DefaultButton, Stack, Text, IButtonStyles, IButtonProps } from 'office-ui-fabric-react';
 
 interface TodoFooterProps {
   clear: () => void;
@@ -12,13 +12,25 @@ export const TodoFooter = (props: TodoFooterProps) => {
 
   // TODO: play around with the DefaultButton component below with a "styles" prop
   // - try it with an object: styles={{ ... }}
+
+  const defaultButtonStyles2 = {
+    root: { backgroundColor: 'white' },
+    rootHovered: { background: 'lightpurple' }
+  };
   // - try it with a function: styles={props => ({ ... })}
+  const defaultButtonStyles = (props): Partial<IButtonStyles> => ({
+    root: { backgroundColor: 'white' },
+    rootHovered: { background: 'lightpurple' }
+  });
+
   return (
     <Stack horizontal horizontalAlign="space-between" verticalAlign="center">
       <Text>
         {itemCount} item{itemCount === 1 ? '' : 's'} left
       </Text>
-      <DefaultButton onClick={() => props.clear()}>Clear Completed</DefaultButton>
+      <DefaultButton onClick={() => props.clear()} styles={defaultButtonStyles2}>
+        Clear Completed
+      </DefaultButton>
     </Stack>
   );
 };

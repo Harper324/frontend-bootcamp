@@ -4,6 +4,8 @@ import { TodoFooter } from './TodoFooter';
 import { TodoHeader } from './TodoHeader';
 import { TodoList } from './TodoList';
 import { Store } from '../store';
+import { Depths } from '@uifabric/fluent-theme/lib/fluent/FluentDepths';
+import { SharedColors } from '@uifabric/fluent-theme/lib/fluent/FluentColors';
 
 // TODO: Change me to another theme!
 import { TeamsCustomizations } from '@uifabric/theme-samples';
@@ -12,8 +14,16 @@ let index = 0;
 
 // TODO: Change this to add other CSS styles like backgroundColor, fontSize, etc
 const className = mergeStyles({
+  backgroundColor: SharedColors.orange10,
+  boxShadow: Depths.depth64,
+  fontSize: 20,
   padding: 25,
-  ...getTheme().effects.elevation4
+  ...getTheme().effects.elevation4,
+  selectors: {
+    ':hover': {
+      backgroundColor: 'white'
+    }
+  }
 });
 
 export class TodoApp extends React.Component<any, Store> {
@@ -28,13 +38,13 @@ export class TodoApp extends React.Component<any, Store> {
     const { filter, todos } = this.state;
     return (
       <Customizer {...TeamsCustomizations}>
-        <Stack horizontalAlign="center">
-          <Stack style={{ width: 400 }} gap={25} className={className}>
-            <TodoHeader addTodo={this._addTodo} setFilter={this._setFilter} filter={filter} />
-            <TodoList complete={this._complete} todos={todos} filter={filter} remove={this._remove} edit={this._edit} />
-            <TodoFooter clear={this._clear} todos={todos} />
-          </Stack>
+      <Stack horizontalAlign="center">
+        <Stack style={{ width: 400 }} gap={25} className={className}>
+          <TodoHeader addTodo={this._addTodo} setFilter={this._setFilter} filter={filter} />
+          <TodoList complete={this._complete} todos={todos} filter={filter} remove={this._remove} edit={this._edit} />
+          <TodoFooter clear={this._clear} todos={todos} />
         </Stack>
+      </Stack>
       </Customizer>
     );
   }

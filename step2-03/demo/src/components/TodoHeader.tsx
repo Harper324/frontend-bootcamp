@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, Text, Pivot, PivotItem, TextField, PrimaryButton } from 'office-ui-fabric-react';
+import { Stack, Text, Pivot, PivotItem, TextField, PrimaryButton, ITextFieldStyles } from 'office-ui-fabric-react';
 import { FilterTypes } from '../store';
 
 interface TodoHeaderProps {
@@ -18,6 +18,19 @@ export class TodoHeader extends React.Component<TodoHeaderProps, TodoHeaderState
     this.state = { labelInput: undefined };
   }
 
+   buttonStyles = {
+    root: { backgroundColor: 'blue' },
+    rootHovered: { background: 'green' }
+  };
+
+   textFieldStyles = (props): Partial<ITextFieldStyles> => ({
+     ...(props.focused && {
+       field: {
+         backgroundColor: '#c7e0f4'
+       }
+     })
+   });
+
   render() {
     return (
       <Stack gap={10}>
@@ -31,16 +44,10 @@ export class TodoHeader extends React.Component<TodoHeaderProps, TodoHeaderState
               placeholder="What needs to be done?"
               value={this.state.labelInput}
               onChange={this.onChange}
-              styles={props => ({
-                ...(props.focused && {
-                  field: {
-                    backgroundColor: '#c7e0f4'
-                  }
-                })
-              })}
+              styles={this.textFieldStyles}
             />
           </Stack.Item>
-          <PrimaryButton onClick={this.onAdd}>Add</PrimaryButton>
+          <PrimaryButton onClick={this.onAdd} styles={this.buttonStyles}>Add</PrimaryButton>
         </Stack>
 
         <Pivot onLinkClick={this.onFilter}>
